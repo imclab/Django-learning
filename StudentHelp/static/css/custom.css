@@ -1,0 +1,13 @@
+html {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    color: #484848;
+    line-height: 1.28;
+}
+
+
+.navbar-custom {
+  background-color: #000000;
+  border-color: #1e1e1e;
+}
