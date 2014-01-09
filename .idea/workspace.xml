@@ -37,10 +37,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StudentHelp/templates/StudentHelp/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="28" selection-start="66" selection-end="66" vertical-scroll-proportion="0.016304348" vertical-offset="0" max-vertical-offset="920">
+            <state line="1" column="28" selection-start="66" selection-end="66" vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="720">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="10" selection-start="74" selection-end="74" vertical-scroll-proportion="0.111228816" vertical-offset="0" max-vertical-offset="944">
               <folding />
             </state>
           </provider>
@@ -84,6 +93,7 @@
         <option value="$PROJECT_DIR$/StudentHelp/templates/StudentHelp/base.html" />
         <option value="$PROJECT_DIR$/StudentHelp/templates/StudentHelp/questionnaire.html" />
         <option value="$PROJECT_DIR$/StudentHelp/templates/StudentHelp/index.html" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -489,10 +499,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="40" width="1196" height="1400" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.240625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.240625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956523" sideWeight="0.7591362" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -523,11 +533,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/StudentHelp/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="36" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentHelp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="31" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="210">
@@ -624,7 +629,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/StudentHelp/templates/StudentHelp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="28" selection-start="66" selection-end="66" vertical-scroll-proportion="0.016304348" vertical-offset="0" max-vertical-offset="920">
+        <state line="1" column="28" selection-start="66" selection-end="66" vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="10" selection-start="74" selection-end="74" vertical-scroll-proportion="0.111228816" vertical-offset="0" max-vertical-offset="944">
           <folding />
         </state>
       </provider>
