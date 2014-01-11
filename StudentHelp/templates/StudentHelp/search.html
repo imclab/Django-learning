@@ -1,0 +1,13 @@
+{% extends "StudentHelp/base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+
+    <h2>Search field</h2>
+
+    <form action="/word/search/" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+
+
+{% endblock %}
