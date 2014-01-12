@@ -5,46 +5,29 @@
     <h2>Team selector - questionnaire</h2>
     <br/>
 
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">Question 1 - What is blue?</h3>
-        </div>
-        <div class="panel-body">
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                    Option one is this and that&mdash;be sure to include why it's great
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                    Option two can be something else and selecting it will deselect option one
-                </label>
-            </div>
-        </div>
-    </div>
+    {% if latest_poll_list %}
+        {% for poll in latest_poll_list %}
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ poll.id }} - {{ poll.question }}</h3>
+                </div>
+                <div class="panel-body">
+                    {% for choice in poll.choice_set.all %}
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                {{ choice.choice_text }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
 
-     <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">Question 2 - Do you like horses?</h3>
-        </div>
-        <div class="panel-body">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Option one is this and that&mdash;be sure to include why it's great
-                </label>
             </div>
+        {% endfor %}
+    {% else %}
+        <p>No questions are available.</p>
+    {% endif %}
 
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Option two is this and that&mdash;be sure to include why it's great
-                </label>
-            </div>
-        </div>
-    </div>
 
     <form action="/word/quiz">
         <button type="submit" class="btn btn-success btn-lg btn-block">Ship it!</button>

@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from django.template import RequestContext, loader
+from StudentHelp.models import Poll, Choice
 
 
 def index(request):
@@ -27,7 +28,7 @@ def display_meta(request):
     for k, v in values:
         html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
     c = RequestContext(request, {
-        'data': html
+        'data': '<table>%s</table>' % '\n'.join(html)
     })
     #return HttpResponse('<table>%s</table>' % '\n'.join(html))
     return HttpResponse(template.render(c))
@@ -38,24 +39,25 @@ def search_form(request):
     context = RequestContext(request, {})
     return HttpResponse(template.render(context))
 
+
 def quiz(request):
+    latest_poll_list = Poll.objects.order_by('id')[:5]
     template = loader.get_template('StudentHelp/questionnaire.html')
-    context = RequestContext(request, {})
+    context = RequestContext(request, {
+        'latest_poll_list': latest_poll_list,
+    })
     return HttpResponse(template.render(context))
-
-
-def search2(request):
-    if 'q' in request.GET:
-        message = 'You searched for: %r' % request.GET['q']
-    else:
-        message = 'You submitted an empty form.'
-    return HttpResponse(message)
 
 
 def search(request):
     template = loader.get_template('StudentHelp/results.html')
-    q = request.GET['q']
-    context = RequestContext(request, {
-        'searched': q
-    })
+    if 'q' in request.GET:
+        q = request.GET['q']
+        context = RequestContext(request, {
+            'searched': q
+        })
+    else:
+        context = RequestContext(request, {
+            'searched': 'Empty search form'
+        })
     return HttpResponse(template.render(context))
