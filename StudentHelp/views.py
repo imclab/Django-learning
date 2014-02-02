@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from StudentHelp.models import Poll, Choice
+from StudentHelp.services import verbix
 
 
 def index(request):
@@ -51,13 +52,16 @@ def quiz(request):
 
 def search(request):
     template = loader.get_template('StudentHelp/results.html')
+    verb_conjugated = verbix.Verbix()
     if 'q' in request.GET:
         q = request.GET['q']
         context = RequestContext(request, {
-            'searched': q
+            'searched': q,
+            'verbix': verb_conjugated.get_conjugations(request.GET['q'])
         })
     else:
         context = RequestContext(request, {
             'searched': 'Empty search form'
         })
     return HttpResponse(template.render(context))
+

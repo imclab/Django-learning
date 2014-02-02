@@ -5,7 +5,15 @@
     <h2>Results</h2>
 
 
-   <p>Your search query was {{ searched }} then blabla</p>
+    <p>Your search query was {{ searched }} then blabla</p>
+
+    <p>Verbix results</p>
+    {% autoescape off %}
+        {{ verbix }}
+    {% endautoescape %}
+
+    <p>Raw HTML</p>
+    {{ verbix }}
 
 
 {% endblock %}
