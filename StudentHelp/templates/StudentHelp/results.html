@@ -4,16 +4,37 @@
 
     <h2>Results</h2>
 
-
-    <p>Your search query was {{ searched }} then blabla</p>
-
-    <p>Verbix results</p>
-    {% autoescape off %}
-        {{ verbix }}
-    {% endautoescape %}
-
-    <p>Raw HTML</p>
-    {{ verbix }}
-
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        Verbix results
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    {% autoescape off %}
+                        {{ verbix.2 }}
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        Verbix HTML Raw
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {{ verbix.2 }}
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
