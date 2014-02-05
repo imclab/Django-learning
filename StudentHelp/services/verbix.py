@@ -13,6 +13,9 @@ class Verbix(models.Model):
     url = ""
     language = "Finnish"
     allowed_tags = ['class', 'td', 'tr', 'table', 'p', 'br', 'b', 'th']
+    allowed_attr = {
+        'table': ['class']
+    }
 
     def get_conjugations(self, verb):
         """
@@ -36,14 +39,44 @@ class Verbix(models.Model):
         """
         results = []
         soup = BeautifulSoup(html)
-        tables = soup.find_all("table", class_="verbtable")
-        for table in tables:
-            table['class'] = 'table'
-            sections = table.find_all('tr')
-            for section in sections:
-                clean_rows = bleach.clean(section, self.allowed_tags, strip=True)
-                results.append(clean_rows)
+        if self.is_a_verb(soup):
+            tables = soup.find_all("table", class_="verbtable")
+            # We take the first table tables[0] since is the one with all needed information
+            sections = tables[0].find_all('tr')  # We look inside for 'tr' tags
+            # We look first for Personal and Nominal forms, they are in sections[2]
+            # inside 2 'td' tags and inside a table each
+            tr_block = sections[2].find_all('td', class_="verbtable")
+            for td in tr_block:
+                table = td.find('table')
+                table['class'] = 'table'  # add class="table" to the table tag for CSS purposes
+                results.append(bleach.clean(table, self.allowed_tags, self.allowed_attr, strip=True))
+                # Now we have in results 0 and 1 the first tables
+            # Next is same for the other two blocks
+            # They are inside sections 14, to see why, debug and check values on sections values
+            tr_block = sections[14].find_all('td', class_="verbtable")
+            for td in tr_block:
+                table = td.find('table')
+                table['class'] = 'table'  # add class="table" to the table tag for CSS purposes
+                results.append(bleach.clean(table, self.allowed_tags, self.allowed_attr, strip=True))
+
         return results
+
+    def is_a_verb(self, html):
+        """
+        Given an html output will look for verbnotexits class
+        returning False if is it NOT a verb, other wise True
+        """
+        results = html.find_all('div', class_="verbnotexist")
+        if not results:
+            return True
+        else:
+            return False
+
+    def parse_to_json(self):
+        """
+        Given a table, parse it into a JSON form
+        """
+        # http://stackoverflow.com/questions/18544634/convert-a-html-table-to-json
 
     def __unicode__(self):
         return self.service_name

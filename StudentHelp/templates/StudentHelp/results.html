@@ -2,39 +2,96 @@
 {% block title %}Results{% endblock %}
 {% block content %}
 
-    <h2>Results</h2>
+    <h2>Results for word: {{ searched }}</h2>
 
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Verbix results
-                    </a>
-                </h4>
+    {% if verbix %}
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Personal Forms
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        {% autoescape off %}
+                            {{ verbix.0 }}
+                        {% endautoescape %}
+                    </div>
+                </div>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    {% autoescape off %}
-                        {{ verbix.2 }}
-                    {% endautoescape %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Nominal Forms
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {% autoescape off %}
+                            {{ verbix.1 }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                            Passive
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {% autoescape off %}
+                            {{ verbix.2 }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                            Participles
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {% autoescape off %}
+                            {{ verbix.3 }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseRaw">
+                            Debug - HTML Raw
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseRaw" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        {{ verbix.0 }}
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                        Verbix HTML Raw
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
-                    {{ verbix.2 }}
-                </div>
-            </div>
+    {% else %}
+        <br/>
+        <div class="alert alert-danger">
+            <h3>{{ searched }} is not a verb!</h3>
         </div>
-    </div>
+    {% endif %}
 
 {% endblock %}
