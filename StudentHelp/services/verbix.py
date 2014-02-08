@@ -6,23 +6,26 @@ import requests
 import bleach
 
 
-class Verbix(models.Model):
+class Verbix():
     service_name = "verbix"
-    verb = ""
     baseUrl = "http://www.verbix.com/webverbix/"
-    url = ""
     language = "Finnish"
     allowed_tags = ['class', 'td', 'tr', 'table', 'p', 'br', 'b', 'th']
     allowed_attr = {
         'table': ['class']
     }
 
-    def get_conjugations(self, verb):
+    def __init__(self, verb):
         """
         Constructor of the class
         """
         self.verb = verb
         self.url = self.baseUrl + self.language + "/" + verb + ".html"
+
+    def get_conjugations(self):
+        """
+        Return verb conjugations
+        """
         return self.parse_html(self.get_html())
 
     def get_html(self):
